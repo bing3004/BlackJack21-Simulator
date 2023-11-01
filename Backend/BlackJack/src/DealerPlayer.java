@@ -22,4 +22,12 @@ public class DealerPlayer extends Player{
             }
         }
     }
+
+    @Override
+    public void printStatus(){
+        System.out.println("Dealer Score: "+ score());
+        for (Card card: cards){
+            System.out.println(card.toString());
+        }
+    }
 }

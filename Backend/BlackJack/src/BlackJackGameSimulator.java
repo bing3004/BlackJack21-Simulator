@@ -16,27 +16,30 @@ public class BlackJackGameSimulator {
     }
 
     private void printStatus(){
-        player.printStatus();;
+        player.printStatus();
         dealer.printStatus();
     }
 
     public void simulate(){
+        String newline = System.lineSeparator();
+
+        System.out.println("------------------Game Start------------------");
         printStatus();
 
         if(player.isBlackJack()){
             if(dealer.isBlackJack()){
-                System.out.println("---Draw---");
+                System.out.println("Result:>>>>>>>>>>>>>>   Draw");
             }else{
-                System.out.println("Player Black jack wins");
+                System.out.println("Result:>>>>>>>>>>>>>>   Player Black jack wins!!!!!!");
             }
             return;
         } else if (dealer.isBlackJack()) {
-            System.out.println("Dealer Black jack wins");
+            System.out.println("Result:>>>>>>>>>>>>>>   Dealer Black jack wins!!!!!!");
             printStatus();
             return;
         }
 
-        System.out.println("---Player round---");
+        System.out.println("---------------Player round---------------");
         while(player.action(this.duck) == Action.Hit){
             if(player.isBusted()){
                 System.out.println("--Dealer wins--");
@@ -45,7 +48,7 @@ public class BlackJackGameSimulator {
             }
         }
 
-        System.out.println("--Dealer round--");
+        System.out.println("--------------Dealer round--------------");
         while(dealer.action(this.duck) == Action.Hit){
             if(dealer.isBusted()){
                 System.out.println("--Player wins--");

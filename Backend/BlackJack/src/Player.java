@@ -3,25 +3,37 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
+import java.util.*;
 
 public class Player {
     private static final Random random = new Random();
     private static final double hitRatio = 0.5;
     protected final List<Card> cards = new ArrayList<>();
 
+    private Scanner sc= new Scanner(System.in);
+
     public Action action (Duck d) {
-        if (random.nextDouble() < hitRatio) {
+        printStatus();
+        System.out.print("Enter 1 to hit");
+        int input = sc.nextInt();
+        if (input == 1){
             hit(d);
             return Action.Hit;
-        }else {
+        } else {
             stand();
             return Action.Stand;
         }
+//        if (random.nextDouble() < hitRatio) {
+//            hit(d);
+//            return Action.Hit;
+//        }else {
+//            stand();
+//            return Action.Stand;
+//        }
     }
 
     public int score() {
-        Collections.sort(cards, Collections.reverseOrder());
+        cards.sort(Collections.reverseOrder());
         int score = 0;
         int i = 0;
         for (; i < cards.size(); i++){
@@ -69,7 +81,7 @@ public class Player {
     }
 
     public void printStatus(){
-        System.out.println("Score:"+ score());
+        System.out.println("Player Score: "+ score());
         for (Card card: cards){
             System.out.println(card.toString());
         }
