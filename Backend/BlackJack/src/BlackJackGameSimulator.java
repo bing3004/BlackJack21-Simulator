@@ -48,7 +48,7 @@ public class BlackJackGameSimulator {
             }
         }
 
-        System.out.println("------------------Dealer round111--------------");
+        System.out.println("------------------Dealer round1111212--------------");
         while(dealer.action(this.duck) == Action.Hit){
             if(dealer.isBusted()){
                 System.out.println("--Player wins--");
